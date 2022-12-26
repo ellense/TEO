@@ -238,9 +238,11 @@ const zatrata_time = document.querySelector('#zatrata_time');
 const zatrata_time2 = document.querySelector('#zatrata_time2');
 const zatrata_time3 = document.querySelector('#zatrata_time3');
 const zatrata_time4 = document.querySelector('#zatrata_time4');
+
 const DPZPSP = document.querySelector('#DPZPSP');
 const DPZPSA = document.querySelector('#DPZPSA');
 const col_day2 = document.querySelector('#col_day2');
+const coef_ragion2 = document.querySelector('#coef_ragion2');
 
 
 const amortizacia = document.querySelector('#amortizacia');
@@ -252,6 +254,7 @@ const coef_moshnost = document.querySelector('#coef_moshnost');
 const tarif_energy = document.querySelector('#tarif_energy');
 const moshnost = document.querySelector('#moshnost');
 const remont = document.querySelector('#remont');
+const coef_naclad_rashod = document.querySelector('#coef_naclad_rashod');
 
 const DPZPSP2 = document.querySelector('#DPZPSP2');
 const DPZPSA2 = document.querySelector('#DPZPSA2');
@@ -452,8 +455,8 @@ function day_stavkaP(){
 }
 
 function DPZPSPf(){
-  DPZPSP.value = parseFloat((stavka_DPZPSP.value*zatrata_time.value+stavka_DPZPSP2.value*zatrata_time2.value)*(1+parseFloat(coef_otpysk.value) + parseFloat(coef_ragion.value))*(1+parseFloat(coef_PF.value) + parseFloat(coef_FFOMS.value) + parseFloat(coef_FSS.value) + parseFloat(coef_travmi.value))).toFixed(2);
-  DPZPSP2.value = parseFloat((stavka_DPZPSP.value*zatrata_time.value+stavka_DPZPSP2.value*zatrata_time2.value)*(1+parseFloat(coef_otpysk.value) + parseFloat(coef_ragion.value))*(1+parseFloat(coef_PF.value) + parseFloat(coef_FFOMS.value) + parseFloat(coef_FSS.value) + parseFloat(coef_travmi.value))).toFixed(2);
+  DPZPSP.value = parseFloat((stavka_DPZPSP.value*zatrata_time.value+stavka_DPZPSP2.value*zatrata_time2.value)*(1+parseFloat(coef_otpysk.value) + parseFloat(coef_ragion2.value))*(1+parseFloat(coef_PF.value) + parseFloat(coef_FFOMS.value) + parseFloat(coef_FSS.value) + parseFloat(coef_travmi.value))).toFixed(2);
+  DPZPSP2.value = parseFloat((stavka_DPZPSP.value*zatrata_time.value+stavka_DPZPSP2.value*zatrata_time2.value)*(1+parseFloat(coef_otpysk.value) + parseFloat(coef_ragion2.value))*(1+parseFloat(coef_PF.value) + parseFloat(coef_FFOMS.value) + parseFloat(coef_FSS.value) + parseFloat(coef_travmi.value))).toFixed(2);
 }
 
   function day_stavkaA(){
@@ -462,8 +465,8 @@ function DPZPSPf(){
 }
 
 function DPZPSAf(){
-  DPZPSA.value = parseFloat((stavka_DPZPSA.value*zatrata_time3.value+stavka_DPZPSA2.value*zatrata_time4.value)*(1+parseFloat(coef_otpysk.value) + parseFloat(coef_ragion.value))*(1+parseFloat(coef_PF.value) + parseFloat(coef_FFOMS.value) + parseFloat(coef_FSS.value) + parseFloat(coef_travmi.value))).toFixed(2);
-  DPZPSA2.value = parseFloat((stavka_DPZPSA.value*zatrata_time3.value+stavka_DPZPSA2.value*zatrata_time4.value)*(1+parseFloat(coef_otpysk.value) + parseFloat(coef_ragion.value))*(1+parseFloat(coef_PF.value) + parseFloat(coef_FFOMS.value) + parseFloat(coef_FSS.value) + parseFloat(coef_travmi.value))).toFixed(2);
+  DPZPSA.value = parseFloat((stavka_DPZPSA.value*zatrata_time3.value+stavka_DPZPSA2.value*zatrata_time4.value)*(1+parseFloat(coef_otpysk.value) + parseFloat(coef_ragion2.value))*(1+parseFloat(coef_PF.value) + parseFloat(coef_FFOMS.value) + parseFloat(coef_FSS.value) + parseFloat(coef_travmi.value))).toFixed(2);
+  DPZPSA2.value = parseFloat((stavka_DPZPSA.value*zatrata_time3.value+stavka_DPZPSA2.value*zatrata_time4.value)*(1+parseFloat(coef_otpysk.value) + parseFloat(coef_ragion2.value))*(1+parseFloat(coef_PF.value) + parseFloat(coef_FFOMS.value) + parseFloat(coef_FSS.value) + parseFloat(coef_travmi.value))).toFixed(2);
 }
 
 
@@ -476,7 +479,7 @@ function ZATRATI2(){
   ZNTROIYS2.value = parseFloat((balans.value * remont.value) * ((parseInt(zatrata_time3.value) + parseInt(zatrata_time4.value))* hours_day.value) / (hours_day.value * day_year.value)).toFixed(2);
   ZNMIMN.value =  parseFloat(balans.value *0.01).toFixed(2);
   ZNMIMN2.value = parseFloat(balans.value * 0.01).toFixed(2);
-  NRIO.value = parseFloat((parseFloat(DPZPSP.value) + parseFloat(AOOSOIYS.value) + parseFloat(ZNSE.value)+ parseFloat(ZNTROIYS.value) + parseFloat(ZNMIMN.value) )* 0.2).toFixed(2);
+  NRIO.value = parseFloat((parseFloat(DPZPSP.value) + parseFloat(AOOSOIYS.value) + parseFloat(ZNSE.value)+ parseFloat(ZNTROIYS.value) + parseFloat(ZNMIMN.value) )* coef_naclad_rashod.value).toFixed(2);
   NRIO2.value = parseFloat((parseFloat(DPZPSA.value) + parseFloat(AOOSOIYS2.value) + parseFloat(ZNSE2.value)+ parseFloat(ZNTROIYS2.value) + parseFloat(ZNMIMN2.value) )* 0.2).toFixed(2);
   ITOG3.value = parseFloat(parseFloat(DPZPSP.value) + parseFloat(AOOSOIYS.value) + parseFloat(ZNSE.value)+ parseFloat(ZNTROIYS.value) + parseFloat(ZNMIMN.value) +parseFloat(NRIO.value)).toFixed(2);
   ITOG4.value = parseFloat(parseFloat(DPZPSA.value) + parseFloat(AOOSOIYS2.value) + parseFloat(ZNSE2.value)+ parseFloat(ZNTROIYS2.value) + parseFloat(ZNMIMN2.value) +parseFloat(NRIO2.value)).toFixed(2);
